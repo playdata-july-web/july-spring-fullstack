@@ -14,7 +14,7 @@ import kr.pe.july.auth.UserDetailsServiceImp;
 @EnableWebSecurity
 public class SecurityConfig {
 	
-	private final String API = "api";
+	private final String URL = "/api/auth";
 	
 	@Bean
 	public AuthenticationProviderImp getProvider() {
@@ -36,15 +36,17 @@ public class SecurityConfig {
 		http.csrf().disable();
 		
 		http.authorizeRequests()
-			.antMatchers(API + "/admin").hasRole("ADMIN")
-			.antMatchers(API+ "/member").hasRole("MEMBER")
+			.antMatchers(URL + "/admin").hasRole("ADMIN")
+			.antMatchers(URL + "/member").hasRole("MEMBER")
 			.anyRequest().permitAll();
 		
 		http.formLogin()
-			.loginProcessingUrl(API + "/login");
+			.loginProcessingUrl(URL + "/login")
+			.failureForwardUrl(URL + "/fail");
 		
 		http.logout()
-			.logoutUrl(API + "logout");
+			.logoutUrl(URL + "/logout")
+			.logoutSuccessUrl(URL + "/home");
 		
 		http.sessionManagement()
 			.maximumSessions(1)
