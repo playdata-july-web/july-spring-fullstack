@@ -1,5 +1,9 @@
 package kr.pe.july.model.repository;
 
-public interface UserRepository {
+import org.springframework.data.repository.CrudRepository;
+
+import kr.pe.july.model.entity.User;
+
+public interface UserRepository extends CrudRepository<User, String>{
 
 }
