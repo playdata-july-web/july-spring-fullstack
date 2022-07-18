@@ -41,7 +41,7 @@ public class UserController {
 			return "signup_form";
 		}
 
-		userService.create(userCreateForm.getUsername(), userCreateForm.getPassword1());
+		userService.create(userCreateForm);
 
 		return "redirect:/";
 	}
