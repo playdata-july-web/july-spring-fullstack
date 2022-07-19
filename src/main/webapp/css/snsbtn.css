@@ -1,0 +1,43 @@
+@charset "UTF-8";
+.fa {
+  border-radius: 50%;
+  padding: 20px;
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+  margin: 20px 2px;
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+.fa-youtube {
+  background-color : transparent;
+  color: black;
+  text-decoration:none !important;
+}
+
+.fa-instagram {
+  background-color : transparent;
+  color: black;
+  text-decoration:none !important;
+}
+.fa-youtube:hover {
+  text-decoration:none !important;
+}
+
+.fa-instagram:hover {
+  text-decoration:none !important;
+}
+.login{
+
+    width: 60px;
+    height: 24px;
+    border-radius: 5px;
+    border: 0;
+    outline: 0;
+    background-color: coral;
+    color:white
+}
