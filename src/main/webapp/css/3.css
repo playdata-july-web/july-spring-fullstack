@@ -1,0 +1,48 @@
+.searchbar {
+  position: relative;
+  width : 40px;
+}
+
+input {
+  width: 50%;
+  border: 1px solid #bbb;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 14px;
+}
+.option {
+  position: relative;
+  width: 50px;
+  height: 40px;
+  border-radius: 4px;
+  border: 2px solid lightcoral;
+  -o-appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+.option .select {
+  width: inherit;
+  height: inherit;
+  background: transparent;
+  border: 0 none;
+  outline: 0 none;
+  padding: 0 5px;
+  position: relative;
+  z-index: 3; 
+}
+.option .select option {
+  background: lightcoral;
+  color: #fff;
+  padding: 3px 0;
+  font-size: 16px;
+}
+.search{
+  width: 50px;
+  height: 40px;
+  border-radius: 5px;
+  border: 0;
+  outline: 0;
+  background-color: coral;
+  color:white
+}
