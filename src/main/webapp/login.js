@@ -4,8 +4,8 @@ const login = document.getElementById('login')
 let errStack = 0;
 
 login.addEventListener('click', () => {
-    if (id.value == 'admin') {
-        if (password.value == '0000') {
+    if (id.value == 'admin') {//아이디 변수값 넣기
+        if (password.value == '0000') {//비밀번호 변수값 넣기
             alert('로그인 되었습니다!')
         }
         else {
