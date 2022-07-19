@@ -1,6 +1,5 @@
 package kr.pe.july.auth;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -8,13 +7,15 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 public class AuthenticationProviderImp implements AuthenticationProvider {
 	
-	@Autowired
-	private UserDetailsServiceImp service;
+	private final UserDetailsServiceImp service;
 	
-	@Autowired
-	private BCryptPasswordEncoder passwordEncoder;
+	private final BCryptPasswordEncoder passwordEncoder;
 
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {

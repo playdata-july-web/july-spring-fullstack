@@ -9,26 +9,31 @@ import org.springframework.security.web.SecurityFilterChain;
 
 import kr.pe.july.auth.AuthenticationProviderImp;
 import kr.pe.july.auth.UserDetailsServiceImp;
+import kr.pe.july.model.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 
 @Configuration
 @EnableWebSecurity
+@RequiredArgsConstructor
 public class SecurityConfig {
 	
 	private final String URL = "/api/auth";
 	
-	@Bean
-	public AuthenticationProviderImp getProvider() {
-		return new AuthenticationProviderImp();
-	}
-	
-	@Bean
-	public UserDetailsServiceImp getService() {
-		return new UserDetailsServiceImp();
-	}
+	private final UserRepository userRepository;
 	
 	@Bean
 	public BCryptPasswordEncoder getPasswordEncoder() {
 		return new BCryptPasswordEncoder();
+	}
+	
+	@Bean
+	public UserDetailsServiceImp getService() {
+		return new UserDetailsServiceImp(userRepository);
+	}
+	
+	@Bean
+	public AuthenticationProviderImp getProvider() {
+		return new AuthenticationProviderImp(getService(), getPasswordEncoder());
 	}
 	
 	@Bean

@@ -1,6 +1,5 @@
 package kr.pe.july.auth;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -10,11 +9,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import kr.pe.july.model.entity.User;
 import kr.pe.july.model.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
 public class UserDetailsServiceImp implements UserDetailsService {
 	
-	@Autowired
-	private UserRepository repository;
+	private final UserRepository repository;
 	
 	private UserDetailsImp entityToDto(User user) {
 		ObjectMapper mapper = new ObjectMapper();
