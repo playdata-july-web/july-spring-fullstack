@@ -36,7 +36,7 @@ public class SecurityConfig {
 		http.csrf().disable();
 		
 		http.authorizeRequests()
-			.antMatchers(URL + "/admin").hasRole("ADMIN")
+			.antMatchers("/api/external").hasRole("ADMIN")
 			.antMatchers(URL + "/member").hasRole("MEMBER")
 			.anyRequest().permitAll();
 		
