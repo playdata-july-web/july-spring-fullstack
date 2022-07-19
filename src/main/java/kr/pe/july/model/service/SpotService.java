@@ -20,10 +20,9 @@ public class SpotService {
 	
 	private final SpotRepository spotRepository;
 	
-	private List<SpotDTO> entitysToDtos(Iterable<Spot> spots) {
+	private List<SpotDTO> entitysToDtos(List<Spot> spots) {
 		ObjectMapper mapper = new ObjectMapper();
-		return StreamSupport.stream(spots.spliterator(), false).collect(Collectors.toList())
-				.stream().map(spot -> mapper.convertValue(spot, new TypeReference<SpotDTO>() {})).collect(Collectors.toList());
+		return spots.stream().map(spot -> mapper.convertValue(spot, new TypeReference<SpotDTO>() {})).collect(Collectors.toList());
 	}
 	
 	private SpotDTO entityToDto(Spot spot) {
