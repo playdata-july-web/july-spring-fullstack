@@ -24,6 +24,7 @@ public class User {
 	@Id
 	@Column(name="user_name")
 	private String username;
+	
 	@Column(name="pw")
 	private String password;
 	

@@ -2,7 +2,8 @@ package kr.pe.july.model.service;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
+
+import javax.persistence.EntityNotFoundException;
 
 import org.springframework.stereotype.Service;
 
@@ -41,6 +42,10 @@ public class SpotService {
 	
 	public List<SpotDTO> findByTagContaining(String tag) {
 		return entitysToDtos(spotRepository.findByTagContaining(tag));
+	}
+	
+	public SpotDTO findById(int id) {
+		return entityToDto(spotRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Spot Not Found : " + id)));
 	}
 	
 	public SpotDTO addSpot(SpotDTO spotDTO) {

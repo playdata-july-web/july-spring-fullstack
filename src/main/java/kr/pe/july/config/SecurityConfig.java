@@ -43,6 +43,7 @@ public class SecurityConfig {
 		http.authorizeRequests()
 			.antMatchers("/api/external").hasRole("ADMIN")
 			.antMatchers(URL + "/member").hasRole("MEMBER")
+			.antMatchers("/api/likes").hasRole("MEMBER")
 			.anyRequest().permitAll();
 		
 		http.formLogin()
