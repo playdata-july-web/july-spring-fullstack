@@ -3,7 +3,6 @@ package kr.pe.july.model.dto;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -25,5 +24,5 @@ public class UserCreateForm {
     //비밀번호 한 번 더 확인
     @NotEmpty(message = "비밀번호 확인은 필수항목입니다.")
     private String password2;
-
+    
 }
