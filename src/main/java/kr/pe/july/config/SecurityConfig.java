@@ -17,8 +17,6 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class SecurityConfig {
 	
-	private final String URL = "/api/auth";
-	
 	private final UserRepository userRepository;
 	
 	@Bean
@@ -42,17 +40,19 @@ public class SecurityConfig {
 		
 		http.authorizeRequests()
 			.antMatchers("/api/external").hasRole("ADMIN")
-			.antMatchers(URL + "/member").hasRole("MEMBER")
 			.antMatchers("/api/likes").hasRole("MEMBER")
 			.anyRequest().permitAll();
 		
 		http.formLogin()
-			.loginProcessingUrl(URL + "/login")
-			.failureForwardUrl(URL + "/fail");
+			.loginPage("/api/auth/form")
+			.loginProcessingUrl("/login")
+			.defaultSuccessUrl("/api/auth/login")
+			.failureUrl("/api/auth/form");
 		
 		http.logout()
-			.logoutUrl(URL + "/logout")
-			.logoutSuccessUrl(URL + "/home");
+			.logoutSuccessUrl("/api/auth/logout")
+			.invalidateHttpSession(true)
+			.deleteCookies("JSESSIONID");
 		
 		http.sessionManagement()
 			.maximumSessions(1)
