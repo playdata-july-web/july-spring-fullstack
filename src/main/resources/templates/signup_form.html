@@ -1,25 +1,40 @@
 <html layout:decorate="~{layout}">
+
+<link th:href="@{/signup.css}" rel="stylesheet" />
+
 <div layout:fragment="content" class="container my-3">
-    <div class="my-3 border-bottom">
-        <div>
-            <h4>회원가입</h4>
-        </div>
+    <div class="container">
+
+        <div style="text-align: center">
+            <h1>
+            	<span>Sign</span><span> Up</span><span> In</span><span> Web</span>
+            </h1>
     </div>
     <form th:action="@{/api/signup}" th:object="${userCreateForm}" method="post">
 <!--         <div th:replace="form_errors :: formErrorsFragment"></div> -->
-        <div class="mb-3">
-            <label for="username" class="form-label">사용자ID</label>
-            <input type="text" th:field="*{username}" class="form-control">
+        <div style="text-align: left">
+         	<label for="username" class="form-label"><b>Email</b></label> <br>
         </div>
-        <div class="mb-3">
-            <label for="password" class="form-label">비밀번호</label>
-            <input type="password" th:field="*{password1}" class="form-control">
+        <div class="mb-3" style="text-align: center">
+            <input type="email" th:field="*{username}" placeholder="Email" class="form-control">
         </div>
-        <div class="mb-3">
-            <label for="password" class="form-label">비밀번호 확인</label>
-            <input type="password" th:field="*{password2}" class="form-control">
+        
+        <div style="text-align: left">
+         	<label for="username" class="form-label"><b>Password</b></label> <br>
         </div>
-        <button type="submit" class="btn btn-primary">회원가입</button>
+        <div class="mb-3" style="text-align: center">
+            <input type="password" th:field="*{password1}" placeholder="Enter Password" class="form-control">
+        </div>
+        
+		<div style="text-align: left">
+         	<label for="username" class="form-label"><b>Repeat Password</b></label> <br>
+        </div>
+        <div class="mb-3" style="text-align: center">
+            <input type="password" th:field="*{password2}" placeholder="Repeat Password" class="form-control">
+        </div>
+        <div class="mb-3" style="text-align: center">
+        <button button id="create" type="submit" class="btn btn-primary">Sign up</button>
+        </div>
     </form>
 </div>
 </html>
