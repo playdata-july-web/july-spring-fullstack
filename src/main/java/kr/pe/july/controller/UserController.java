@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import kr.pe.july.exception.DuplicateUserException;
 import kr.pe.july.model.dto.UserCreateForm;
 import kr.pe.july.model.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -27,7 +28,7 @@ public class UserController {
 	}
 
 	@PostMapping("/signup")
-	public String signup(@Valid UserCreateForm userCreateForm, BindingResult bindingResult) {
+	public String signup(@Valid UserCreateForm userCreateForm, BindingResult bindingResult) throws DuplicateUserException {
 		// 에러를 담아내는 BindingResult
 		// 에러가 있을시 폼으로 넘어감
 		if (bindingResult.hasErrors()) {
@@ -41,12 +42,12 @@ public class UserController {
 			return "signup_form";
 		}
 		
-		if(!userCreateForm.getUsername().equals(userService.findByUsername(userCreateForm.getUsername()))) {
+		if(!userCreateForm.getUsername().equals(userService.findByUsername(userCreateForm.getUsername()).getUsername())) {
 			
 			userService.create(userCreateForm);
 			
 		}else {
-			
+			throw new DuplicateUserException("중복된 ID 입니다");
 		}
 		
 

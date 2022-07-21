@@ -12,6 +12,7 @@ import org.springframework.web.client.RestTemplate;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import kr.pe.july.exception.SearchResultNotFoundException;
 import kr.pe.july.model.dto.SpotDTO;
 import kr.pe.july.model.service.SpotService;
 import lombok.RequiredArgsConstructor;
@@ -26,17 +27,19 @@ public class SearchController {
 	
 	
 	@GetMapping("/search")
-	public List<SpotDTO> search(@RequestParam("option") String option, @RequestParam("keyword") String keyword) {
+	public List<SpotDTO> search(@RequestParam("option") String option, @RequestParam("keyword") String keyword) throws SearchResultNotFoundException {
 		List<SpotDTO> spots = null;
 
 		if(option.equals("title")) {
-			
 			spots = spotService.findByTitle(keyword);
-			
 		} else if(option.equals("tag")){
-			
 			spots = spotService.findByTagContaining(keyword);
 		}
+		
+		if(spots.isEmpty()) {
+			throw new SearchResultNotFoundException("검색 결과가 없습니다.");
+		}
+		
 		return spots;
 	}
 	
