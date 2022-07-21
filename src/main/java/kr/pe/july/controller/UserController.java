@@ -43,7 +43,7 @@ public class UserController {
 
 		userService.create(userCreateForm);
 
-		return "redirect:/";
+		return "login_form";
 	}
 
 }

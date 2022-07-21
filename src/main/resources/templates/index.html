@@ -8,7 +8,7 @@
       content="width=
     , initial-scale=1.0"
     />
-    <title>Document</title>
+    <title>login</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -40,7 +40,12 @@
         text-decoration : none;
       ></a>
 
-      <button type="log button" class="login" onclick="location.href='login.html'">Login</button>
+      <button type="log button" class="login" onclick="location.href='/api/auth/form'">Login</button>
+      <form action="/logout">
+      	<div class="container">
+      		<button id="logout" type= "submit" class="account">Logout</button>
+      	</div>
+      </form>
     </div>
   </header>
   <body>

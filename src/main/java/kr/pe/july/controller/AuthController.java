@@ -18,11 +18,11 @@ public class AuthController {
 	
 	@GetMapping("/login")
 	public String loginSuccess() {
-		return "login_form";
+		return "index";
 	}
 	
 	@GetMapping("/logout")
 	public String logout() {
-		return "login_form";
+		return "index";
 	}
 }
