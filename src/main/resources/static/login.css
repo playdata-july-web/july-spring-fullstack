@@ -1,0 +1,61 @@
+h1 span:nth-child(1),h1 span:nth-child(4),h1 span:nth-child(8){
+  color : #4285f4
+}
+h1 span:nth-child(2),h1 span:nth-child(7){
+  color : #ea4335
+}
+h1 span:nth-child(3),h1 span:nth-child(6){
+  color : #fbbc05
+}
+h1 span:nth-child(5){
+  color :#34a853
+}
+h1 span:nth-child(9){
+  color : #ff7f00
+}
+.main {
+  width: 350px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  margin: 0 auto;
+}
+
+.logo {
+  margin-top: 0px;
+  margin-bottom: 40px;
+}
+
+#login {
+  width: 100%;
+  height: 20px;
+  background-color: skyblue;
+  border-color: transparent;
+  color: white;
+  border-radius: 0.5rem;
+}
+
+#signup {
+  width: 100%;
+  height: 20px;
+  border-radius: 0.5rem;
+  background-color: skyblue;
+  border-color: transparent;
+  color: white;
+}
+
+.account {
+  display: block;
+  margin-bottom: 3px;
+  padding: 3px;
+  border: 1px solid lightgray;
+  border-radius: 3px;
+}
+
+#alert {
+  border-color: transparent;
+}

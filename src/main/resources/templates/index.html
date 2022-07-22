@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+    <meta
+      name="viewport"
+      content="width=
+    , initial-scale=1.0"
+    />
+    <title>login</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="/1.css" />
+    <link rel="stylesheet" type="text/css" href="/snsbtn.css" />
+    <link rel="stylesheet" type="text/css" href="/3.css" />
+  </head>
+  <header>
+    <div style="text-align: right; margin-right: 130px">
+      <a
+        href="https://www.youtube.com/c/VISITJEJU/featured"
+        class="fa fa-youtube"
+        text-decoration : none;
+      ></a>
+      <a
+        href="https://instagram.com/all.about.jeju?igshid=YmMyMTA2M2Y="
+        class="fa fa-instagram"
+        text-decoration : none;
+      ></a>
+      </div>
+      
+	<div style="text-align: right; margin-top: -80px; margin-right: 35px">
+      <button type="log button" class="login" onclick="location.href='/api/auth/form'">Login</button>
+      
+      <form action="/logout">
+      <button type="submit" class="logout" id="logout">Logout</button>
+    
+      </form>
+     </div>
+    
+  </header>
+  <body>
+    <h1>
+      <span>W</span><span>e</span><span>l</span><span>c</span><span>o</span
+      ><span>m</span><span>e</span><span>, </span><span>JEJU</span>
+    </h1>
+
+    <div style="text-align: center">
+        <select class="option" name="option" id="option">
+          <option value="title" selected>Title</option>
+          <option value="tag">Tag</option>
+        </select>
+        <input id="keyword" type="text" class="searchar" name="keyword" placeholder="검색어 입력" />
+        <button class="search" onclick="search()">검색</button>
+    </div>
+        <div style=" text-align: center;" class="last"> 
+            <span>제공 서비스 : <a href="https://www.visitjeju.net/kr/">제주 여행</a>
+           </span>
+        </div>
+        <div id="spots"></div>
+  </body>
+  <script> 
+  function search() {
+	  let option = document.getElementById(`option`).value;
+	  let keyword = document.getElementById(`keyword`).value;
+	  let spots = document.getElementById(`spots`);
+	  
+      spots.replaceChildren();
+
+      fetch(`/api/search?option=${option}&keyword=${keyword}`)
+      .then((response) => {
+          return response.json();
+      })
+      .then((data) => {
+          let result = data;
+          const json = JSON.parse(JSON.stringify(result));
+          for(let i = 0; i < json.length; i++) {
+          	const img = document.createElement('img');
+          	img.src = `${json[i]["imgpath"]}`;
+          	spots.appendChild(img);
+          	
+          	const br = document.createElement('br');
+          	spots.appendChild(br);
+          	
+          	const form = document.createElement('form');
+          	form.method = "POST";
+          	form.action = `/api/likes?id=${json[i]["id"]}`;
+          	
+          	const btn = document.createElement('button');
+          	btn.innerHTML = "like";
+          	
+          	form.appendChild(btn);
+          	
+          	spots.appendChild(form);
+          }
+      })
+      .catch(function(error) {
+          console.log(error);
+      });
+  }
+  </script>
+</html>

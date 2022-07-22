@@ -9,22 +9,15 @@ import org.springframework.security.web.SecurityFilterChain;
 
 import kr.pe.july.auth.AuthenticationProviderImp;
 import kr.pe.july.auth.UserDetailsServiceImp;
+import kr.pe.july.model.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 
 @Configuration
 @EnableWebSecurity
+@RequiredArgsConstructor
 public class SecurityConfig {
 	
-	private final String API = "api";
-	
-	@Bean
-	public AuthenticationProviderImp getProvider() {
-		return new AuthenticationProviderImp();
-	}
-	
-	@Bean
-	public UserDetailsServiceImp getService() {
-		return new UserDetailsServiceImp();
-	}
+	private final UserRepository userRepository;
 	
 	@Bean
 	public BCryptPasswordEncoder getPasswordEncoder() {
@@ -32,19 +25,34 @@ public class SecurityConfig {
 	}
 	
 	@Bean
+	public UserDetailsServiceImp getService() {
+		return new UserDetailsServiceImp(userRepository);
+	}
+	
+	@Bean
+	public AuthenticationProviderImp getProvider() {
+		return new AuthenticationProviderImp(getService(), getPasswordEncoder());
+	}
+	
+	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http.csrf().disable();
 		
 		http.authorizeRequests()
-			.antMatchers(API + "/admin").hasRole("ADMIN")
-			.antMatchers(API+ "/member").hasRole("MEMBER")
+			.antMatchers("/api/external").hasRole("ADMIN")
+			.antMatchers("/api/likes").hasRole("MEMBER")
 			.anyRequest().permitAll();
 		
 		http.formLogin()
-			.loginProcessingUrl(API + "/login");
+			.loginPage("/api/auth/form")
+			.loginProcessingUrl("/login")
+			.defaultSuccessUrl("/api/auth/login")
+			.failureUrl("/api/auth/form");
 		
 		http.logout()
-			.logoutUrl(API + "logout");
+			.logoutSuccessUrl("/api/auth/logout")
+			.invalidateHttpSession(true)
+			.deleteCookies("JSESSIONID");
 		
 		http.sessionManagement()
 			.maximumSessions(1)

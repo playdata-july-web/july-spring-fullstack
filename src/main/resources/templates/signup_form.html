@@ -1,0 +1,40 @@
+<html layout:decorate="~{layout}">
+
+<link th:href="@{/signup.css}" rel="stylesheet" />
+
+<div layout:fragment="content" class="container my-3">
+    <div class="container">
+
+        <div style="text-align: center">
+            <h1>
+            	<span>Sign</span><span> Up</span><span> In</span><span> Web</span>
+            </h1>
+    </div>
+    <form th:action="@{/api/signup}" th:object="${userCreateForm}" method="post">
+<!--         <div th:replace="form_errors :: formErrorsFragment"></div> -->
+        <div style="text-align: left">
+         	<label for="username" class="form-label"><b>Email</b></label> <br>
+        </div>
+        <div class="mb-3" style="text-align: center">
+            <input type="email" th:field="*{username}" placeholder="Email" class="form-control">
+        </div>
+        
+        <div style="text-align: left">
+         	<label for="username" class="form-label"><b>Password</b></label> <br>
+        </div>
+        <div class="mb-3" style="text-align: center">
+            <input type="password" th:field="*{password1}" placeholder="Enter Password" class="form-control">
+        </div>
+        
+		<div style="text-align: left">
+         	<label for="username" class="form-label"><b>Repeat Password</b></label> <br>
+        </div>
+        <div class="mb-3" style="text-align: center">
+            <input type="password" th:field="*{password2}" placeholder="Repeat Password" class="form-control">
+        </div>
+        <div class="mb-3" style="text-align: center">
+        <button button id="create" type="submit" class="btn btn-primary">Sign up</button>
+        </div>
+    </form>
+</div>
+</html>
