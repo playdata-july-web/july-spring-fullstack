@@ -5,7 +5,11 @@
 
 &nbsp;
 # 📗 목표
-### 프로젝트를 통해 DB서버의 데이터를 관리, 스프링 웹 서비스, 예외처리, Git 협업을 사용하며 배운 점을 활용해보려한다.
+* CSS, HTML, JS를 활용해 Front-end를 구현합니다. <br>
+* Spring Boot를 활용해 Java Web Application을 구현합니다.<br>
+* MySQL을 활용하여 DB에 table을 생성하고 데이터를 관리합니다.<br>
+* Spring Data JPA를 활용해 CRUD 작업을 수행합니다.<br>
+* Spring Security를 활용해 인증과 권환을 관리합니다.<br>
 
 &nbsp;
 # 📕 기술 스택
