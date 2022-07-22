@@ -132,6 +132,10 @@ CREATE TABLE pick(
 <img width="700" alt="Signup2" src="https://user-images.githubusercontent.com/23309630/180351288-3616186f-8963-441c-9690-3dcf3e924595.png">
 
 &nbsp;
+### :computer: 회원 가입 완료된 데이터
+<img width="700" alt="Signup2" src="https://user-images.githubusercontent.com/105186724/180371085-c9853253-843b-4f01-a171-4d44b56895bb.png">
+
+&nbsp;
 ## 📖 로그인 및 로그 아웃
 📌 Spring Security를 활용해 구현한 로그인 및 로그 아웃 기능입니다.
 
