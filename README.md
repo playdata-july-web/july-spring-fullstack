@@ -114,7 +114,6 @@ CREATE TABLE pick(
     pick_id     INT PRIMARY KEY AUTO_INCREMENT,
     user_name   VARCHAR(50) NOT NULL,
     spot_id     INT NOT NULL,
-    CONSTRAINT fk_user_name_user FOREIGN KEY (user_name) REFERENCES user(user_name),
     CONSTRAINT fk_spot_id_spot FOREIGN KEY (spot_id) REFERENCES spot(spot_id)
 );
 ```
