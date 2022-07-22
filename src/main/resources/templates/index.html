@@ -57,19 +57,58 @@
       ><span>m</span><span>e</span><span>, </span><span>JEJU</span>
     </h1>
 
-    <form action="/api/search">
-      <div style="text-align: center">
-        <select class="option" name="option">
+    <div style="text-align: center">
+        <select class="option" name="option" id="option">
           <option value="title" selected>Title</option>
           <option value="tag">Tag</option>
         </select>
-        <input type="text" class="searchar" name="keyword" placeholder="검색어 입력" />
-        <button class="search">검색</button>
-      </div>
-    </form>
+        <input id="keyword" type="text" class="searchar" name="keyword" placeholder="검색어 입력" />
+        <button class="search" onclick="search()">검색</button>
+    </div>
         <div style=" text-align: center;" class="last"> 
             <span>제공 서비스 : <a href="https://www.visitjeju.net/kr/">제주 여행</a>
            </span>
         </div>
+        <div id="spots"></div>
   </body>
+  <script> 
+  function search() {
+	  let option = document.getElementById(`option`).value;
+	  let keyword = document.getElementById(`keyword`).value;
+	  let spots = document.getElementById(`spots`);
+	  
+      spots.replaceChildren();
+
+      fetch(`/api/search?option=${option}&keyword=${keyword}`)
+      .then((response) => {
+          return response.json();
+      })
+      .then((data) => {
+          let result = data;
+          const json = JSON.parse(JSON.stringify(result));
+          for(let i = 0; i < json.length; i++) {
+          	const img = document.createElement('img');
+          	img.src = `${json[i]["imgpath"]}`;
+          	spots.appendChild(img);
+          	
+          	const br = document.createElement('br');
+          	spots.appendChild(br);
+          	
+          	const form = document.createElement('form');
+          	form.method = "POST";
+          	form.action = `/api/likes?id=${json[i]["id"]}`;
+          	
+          	const btn = document.createElement('button');
+          	btn.innerHTML = "like";
+          	
+          	form.appendChild(btn);
+          	
+          	spots.appendChild(form);
+          }
+      })
+      .catch(function(error) {
+          console.log(error);
+      });
+  }
+  </script>
 </html>
