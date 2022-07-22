@@ -141,26 +141,26 @@ CREATE TABLE pick(
 <img width="700" alt="Login" src="https://user-images.githubusercontent.com/23309630/180347569-ed47e8ed-8203-4b68-a8aa-c838d46b073d.png">
 
 &nbsp;
-## 🔎 검색
-#### 📌 tag로 검색
+## 🧐 검색
+#### 🔎 tag로 검색
 <img width="700" alt="20220722_122612527" src="https://user-images.githubusercontent.com/91239404/180363894-00bb1578-7706-404f-85d0-0655aecc1587.png">
 
 &nbsp;
-#### 📌 title로 검색
+#### 🔎 title로 검색
 <img width="700" alt="예외" src="https://user-images.githubusercontent.com/91239404/180363899-f1b6e810-c717-4d6a-9697-27e2cbd58332.png">
 
 &nbsp;
-#### 📌 예외처리
+#### 🔎 예외처리
 <img width="700" alt="예외" src="https://user-images.githubusercontent.com/91239404/180363905-bcc6225e-10e0-4054-b6ed-208cbd7ee8d8.PNG">
 
 &nbsp;
 ## 👍 좋아요
-#### 📌 like 버튼 클릭
+#### ❤️ like 버튼 클릭
 <img width="700" alt="20220722_122612527" src="https://user-images.githubusercontent.com/105186724/180364338-1912ac00-89c3-403b-b281-fecab1c4f257.png">
 
 &nbsp;
 
-#### 📌 선택한 사진의 데이터 출력
+#### ❤️ 선택한 사진의 데이터 출력
 <img width="700" alt="20220722_122612527" src="https://user-images.githubusercontent.com/105186724/180356697-3413d5ec-e38c-4563-87e7-311576fc86dd.png">
 
 &nbsp;
